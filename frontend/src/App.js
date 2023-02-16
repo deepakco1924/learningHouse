@@ -1,21 +1,25 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navigation from "./components/shared/Navigation/Navigation";
 import Home from "./pages/Home/Home";
 import "./App.css";
 import Register from "./pages/Register/Register";
-import Login from "./pages/Login/Login";
+// import Register from "./pages/Register/Register";
+// import Authenticate from "./pages/Authenticate/Authenticate";
 function App() {
+  const isAuthenticate = true;
   return (
     <BrowserRouter>
       <Navigation />
       <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/register" exact element={<Register />} />
-        <Route path="/login" exact element={<Login />} />
+        <Route exact path="/" element={<Home />} />
+        <Route
+          exact
+          path="/authenticate"
+          element={isAuthenticate ? <Register /> : <Navigate to="/" />}
+        />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-<div></div>;
